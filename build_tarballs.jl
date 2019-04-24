@@ -1,15 +1,15 @@
 using BinaryBuilder
 
-versionstr = "0.5"
+versionstr = "0.6"
 version = VersionNumber(versionstr)
 
 sources = [
     "https://github.com/michaelforney/samurai/releases/download/$(versionstr)/samurai-$(versionstr).tar.gz" =>
-        "a00ef21662719c5e4a18481c8e1b572309ddf47e7087bd5db5664f47352cbb40",
+        "b1ead55ec7b319e08e1c66924c55c2af467f32a250cb86827b7a4496b6a8822f",
 ]
 
 script = raw"""
-cd samurai-0.5
+cd samurai-0.6
 make install PREFIX=${prefix}
 ln -s samu ${prefix}/bin/ninja
 """
@@ -17,7 +17,7 @@ ln -s samu ${prefix}/bin/ninja
 platforms = [
  Linux(:i686, libc=:glibc)
  Linux(:x86_64, libc=:glibc)
-# Linux(:aarch64, libc=:glibc) # mtim error
+# Linux(:aarch64, libc=:glibc) #struct st_mtim error
  Linux(:armv7l, libc=:glibc, call_abi=:eabihf)
  Linux(:powerpc64le, libc=:glibc)
  Linux(:i686, libc=:musl)
